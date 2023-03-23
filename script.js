@@ -20,7 +20,6 @@ let initialScore = 20;
 document.querySelector('.score').textContent = initialScore;
 
 //assigning the secret number to the "number" on the html document
-document.querySelector('.number').textContent = secretNumberGuess;
 
 //adding an event to react to a click event
 document.querySelector('.check').addEventListener('click', function () {
@@ -32,9 +31,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'no number, try again ⛔';
   } //when the guess number is equal to the secretNumberGuess
   else if (guess === secretNumberGuess) {
+    document.querySelector('.number').textContent = secretNumberGuess;
     document.querySelector('.message').textContent = 'WOOW!! you got it 👌 !!';
     initialScore = secretNumberGuess;
-    document.querySelector('.highscore').textContent = initialScore;
+    document.querySelector('body').style.backgroundColor = ' #60b347';
+    document.querySelector('.number').style.width = '30rem';
   } //when the guess is too high
   else if (guess > secretNumberGuess) {
     if (initialScore > 1) {
@@ -60,4 +61,12 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  document.querySelector('.score').textContent = 20;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.message').textContent = 'start guessing...';
+  document.querySelector('.guess').value = Number();
+  document.querySelector('body').style.backgroundColor = ' #222';
 });
